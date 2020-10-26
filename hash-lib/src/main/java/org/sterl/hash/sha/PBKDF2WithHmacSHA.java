@@ -18,15 +18,6 @@ import lombok.Setter;
 /**
  * Re-implementation of the Soteria Pbkdf2PasswordHashImpl to share it with other frameworks.
  * 
- * 
- * <p>
- * To use {@code SimplePasswordHash} with the built-in Database {@link IdentityStore},
- * configure this interface type as the {@code hashAlgorithm} value
- * on the {@link DatabaseIdentityStoreDefinition} annotation.
- * 
- * To configure parameters for {@code SimplePasswordHash}, specify them as the
- * {@code hashAlgorithmParameters} value on the {@link DatabaseIdentityStoreDefinition} annotation.
- * </p>
  * Use one of the following PBKDF2 algorithms:
  * <blockquote><pre>
 PBKDF2WithHmacSHA224
@@ -36,8 +27,7 @@ PBKDF2WithHmacSHA512 -- default
  * </pre></blockquote>
  *
  * <p>
- * The encoded format produced by {@link #generate(char[])}, and consumed by {@link #verify(char[], String)},
- * is as follows:
+ * The encoded format produced is as follows:
  * <blockquote><pre>
 {@code <algorithm>:<iterations>:<base64(salt)>:<base64(hash)>}
  * </pre></blockquote>
@@ -50,17 +40,15 @@ PBKDF2WithHmacSHA512 -- default
  * </ul>
  * <p>
  * Because the algorithm and the parameters used to generate the hash are stored with the hash,
- * the built-in {@code SimplePasswordHash} implementation can verify hashes generated using algorithm
+ * the built-in {@code PBKDF2WithHmacSHA} implementation can verify hashes generated using algorithm
  * and parameter values that differ from the currently configured values. This means the configuration
  * parameters can be changed without impacting the ability to verify existing password hashes.
  * <p>
  * (Password hashes generated using algorithms/parameters outside the range supported by
- * {@code SimplePasswordHash} cannot be verified.)
+ * {@code PBKDF2WithHmacSHA} cannot be verified.)
  *
- * @see DatabaseIdentityStoreDefinition#hashAlgorithm()
- * @see DatabaseIdentityStoreDefinition#hashAlgorithmParameters()
  * 
- * @link https://github.com/payara/patched-src-security-soteria/blob/master/impl/src/main/java/org/glassfish/soteria/identitystores/hash/Pbkdf2PasswordHashImpl.java
+ * @see <a href="https://github.com/payara/patched-src-security-soteria/blob/master/impl/src/main/java/org/glassfish/soteria/identitystores/hash/Pbkdf2PasswordHashImpl.java">Pbkdf2PasswordHashImpl.java</a>
  */
 @Getter @Setter
 public class PBKDF2WithHmacSHA implements PasswordHasher {
@@ -114,6 +102,7 @@ public class PBKDF2WithHmacSHA implements PasswordHasher {
     public PBKDF2WithHmacSHA() {
         this("PBKDF2WithHmacSHA512");
     }
+
     /**
      * Creates a new instance wit the given algorithm and 2048 iterations and 32 for salt and 64 key size.
      * @param algorithm e.g. PBKDF2WithHmacSHA512 | PBKDF2WithHmacSHA384 | PBKDF2WithHmacSHA256
@@ -131,6 +120,11 @@ public class PBKDF2WithHmacSHA implements PasswordHasher {
     }
 
     /**
+     * Hashes the given password using PBKDF2.
+     * 
+     * @param password the password to encode, not <code>null</code>
+     * @return the encoded password, never <code>null</code>
+     * 
      * @see #encode(CharSequence) 
      */
     public String encode(char[] password) {
@@ -152,6 +146,12 @@ public class PBKDF2WithHmacSHA implements PasswordHasher {
         return matches(rawPassword.toString().toCharArray(), encodedPassword);
     }
     /**
+     * Check the given password against the given hash.
+     * 
+     * @param password the entered password
+     * @param hashedPassword the stored password hash to compare
+     * @return <code>true</code> if matches, otherwise <code>false</code>
+     * 
      * @see #matches(CharSequence, String)
      */
     public boolean matches(char[] password, String hashedPassword) {

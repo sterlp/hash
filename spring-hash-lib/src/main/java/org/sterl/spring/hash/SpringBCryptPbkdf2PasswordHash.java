@@ -10,7 +10,7 @@ import org.sterl.hash.bcrypt.BCryptPasswordEncoder.BCryptVersion;
 import org.sterl.hash.sha.PBKDF2WithHmacSHA;
 
 /**
- * Supports the {@link Pbkdf2PasswordHash} and the Spring Boot BCrypt.
+ * Supports the Pbkdf2PasswordHash and the Spring Boot BCrypt.
  * 
  * <h2>Supported Algorithms:</h2>
  * <ul>
@@ -21,7 +21,6 @@ import org.sterl.hash.sha.PBKDF2WithHmacSHA;
  *  <li>BCrypt</li>
  * </ul>
  * 
- * <p>
  * <h2>PBKDF2 Parameters:</h2>
  * <ol>
  *  <li><b>Pbkdf2PasswordHash.Algorithm</b>
@@ -51,8 +50,6 @@ import org.sterl.hash.sha.PBKDF2WithHmacSHA;
  *      </ul>
  *  </li>
  * </ol>
- * </p>
- * <p>
  * <h2>BCrypt Parameters:</h2>
  * <ol>
  * <li><b>BCrypt.Version</b>
@@ -69,7 +66,6 @@ import org.sterl.hash.sha.PBKDF2WithHmacSHA;
  *      </ul>
  *  </li>
  * </ol>
- * </p>
  * @see Algorithm
  * @see BCryptVersion
  * @see BCryptPbkdf2PasswordHash
@@ -84,7 +80,7 @@ public class SpringBCryptPbkdf2PasswordHash implements PasswordEncoder {
      * @param strength the log rounds to use, between 4 and 31, default is 10
      * @param version (optional) default is {@link BCryptVersion#$2A}
      * @param random (optional) {@link SecureRandom} used to hash new passwords
-     * @return the {@link BCryptPbkdf2PasswordHash}, never <code>null</code>
+     * @return the {@link SpringBCryptPbkdf2PasswordHash}, never <code>null</code>
      */
     public static SpringBCryptPbkdf2PasswordHash initBCrypt(
             int strength, BCryptVersion version,  SecureRandom random) {
@@ -109,6 +105,7 @@ public class SpringBCryptPbkdf2PasswordHash implements PasswordEncoder {
      * @param keySizeBytes e.g. 32
      * @param algorithm (optional) default PBKDF2WithHmacSHA512
      * @param random (optional) {@link SecureRandom} to generate the salt
+     * @return the {@link SpringBCryptPbkdf2PasswordHash}, never <code>null</code>
      */
     public static SpringBCryptPbkdf2PasswordHash initPbkdf2(
             int iterations, int saltSizeBytes,

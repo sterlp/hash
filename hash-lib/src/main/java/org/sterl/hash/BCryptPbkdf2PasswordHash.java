@@ -13,7 +13,6 @@ import org.sterl.hash.sha.PBKDF2WithHmacSHA;
  * the work either to {@link PBKDF2WithHmacSHA} for Java EE algorithms and {@link BCryptPasswordEncoder}
  * for Spring boot supported security stores.
  * 
- * <p>
  * Support the following hash {@link Algorithm}:
  * <blockquote><pre>
 PBKDF2WithHmacSHA224
@@ -23,7 +22,6 @@ PBKDF2WithHmacSHA512
 BCrypt
  * </pre></blockquote>
  * 
- * <p>
  * The encoded format as follows for *SHA* algorithms:
  * <blockquote><pre>
 {@code <algorithm>:<iterations>:<base64(salt)>:<base64(hash)>}
@@ -39,9 +37,9 @@ BCrypt
  * <blockquote><pre>
 {@code <spring boot BCrypt encoded password>}
  * </pre></blockquote>
- * </p>
- * @see https://github.com/payara/patched-src-security-soteria/blob/master/impl/src/main/java/org/glassfish/soteria/identitystores/hash/Pbkdf2PasswordHashImpl.java
- * @see https://github.com/spring-projects/spring-security/blob/master/crypto/src/main/java/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.java
+ * 
+ * @see <a href="https://github.com/payara/patched-src-security-soteria/blob/master/impl/src/main/java/org/glassfish/soteria/identitystores/hash/Pbkdf2PasswordHashImpl.java">Pbkdf2PasswordHashImpl.java</a>
+ * @see <a href="https://github.com/spring-projects/spring-security/blob/master/crypto/src/main/java/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.java">BCryptPasswordEncoder.java</a>
  */
 public class BCryptPbkdf2PasswordHash implements PasswordHasher {
     /** the log rounds to use, between 4 and 31, default is 10 */
@@ -87,6 +85,7 @@ public class BCryptPbkdf2PasswordHash implements PasswordHasher {
      * @param keySizeBytes e.g. 32
      * @param algorithm (optional) default PBKDF2WithHmacSHA512
      * @param random (optional) {@link SecureRandom} to generate the salt
+     * @return a new instance of {@link BCryptPbkdf2PasswordHash}, never <code>null</code>
      */
     public static BCryptPbkdf2PasswordHash newPBKDF2Encoder(
             int iterations, int saltSizeBytes,
@@ -123,9 +122,9 @@ public class BCryptPbkdf2PasswordHash implements PasswordHasher {
     }
     /**
      * Consider using the static factory methods. This constructor allows the init of this class.
-     * @param defaultHasher
-     * @param pbkdf2WithHmacSHA
-     * @param bCryptPasswordEncoder
+     * @param defaultHasher the hasher to use if {@link #encode(CharSequence)} is called
+     * @param pbkdf2WithHmacSHA the configured {@link PBKDF2WithHmacSHA}
+     * @param bCryptPasswordEncoder the configured {@link BCryptPasswordEncoder}
      */
     public BCryptPbkdf2PasswordHash(PasswordHasher defaultHasher, 
             PBKDF2WithHmacSHA pbkdf2WithHmacSHA,

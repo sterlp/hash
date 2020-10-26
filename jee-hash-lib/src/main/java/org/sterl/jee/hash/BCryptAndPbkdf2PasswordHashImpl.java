@@ -14,6 +14,7 @@ import org.sterl.hash.bcrypt.BCryptPasswordEncoder.BCryptVersion;
 
 import lombok.Getter;
 
+
 /**
  * Supports the {@link Pbkdf2PasswordHash} and the Spring Boot BCrypt.
  * 
@@ -27,7 +28,6 @@ import lombok.Getter;
  *  <li>BCrypt</li>
  * </ul>
  * 
- * <p>
  * <h2>PBKDF2 Parameters:</h2>
  * <ol>
  *  <li><b>Pbkdf2PasswordHash.Algorithm</b>
@@ -57,8 +57,6 @@ import lombok.Getter;
  *      </ul>
  *  </li>
  * </ol>
- * </p>
- * <p>
  * <h2>BCrypt Parameters:</h2>
  * <ol>
  * <li><b>BCrypt.Version</b>
@@ -75,10 +73,9 @@ import lombok.Getter;
  *      </ul>
  *  </li>
  * </ol>
- * </p>
- * @see Algorithm
- * @see BCryptVersion
- * @see BCryptPbkdf2PasswordHash
+ * @see org.sterl.hash.Algorithm
+ * @see org.sterl.hash.bcrypt.BCryptPasswordEncoder.BCryptVersion
+ * @see org.sterl.hash.BCryptPbkdf2PasswordHash
  */
 @ApplicationScoped
 @Getter
@@ -97,53 +94,48 @@ public class BCryptAndPbkdf2PasswordHashImpl implements BCryptAndPbkdf2PasswordH
     public static final String ALGORITHM = "Algorithm";
 
     /**
-     * <li><b>Pbkdf2PasswordHash.Iterations</b>
+     * <b>Pbkdf2PasswordHash.Iterations</b>
      *      <ul>
      *          <li>min 1024</li>
      *          <li>default 2048</li>
      *      </ul>
-     *  </li>
      */
     public static final String PBKDF2_ITERATIONS = "Pbkdf2PasswordHash.Iterations";
 
     /**
-     * <li><b>Pbkdf2PasswordHash.SaltSizeBytes</b>
+     * <b>Pbkdf2PasswordHash.SaltSizeBytes</b>
      *      <ul>
      *          <li>min 16</li>
      *          <li>default 32</li>
      *      </ul>
-     *  </li>
      */
     public static final String PBKDF2_SALTSIZE = "Pbkdf2PasswordHash.SaltSizeBytes";
 
     /**
-     * <li><b>Pbkdf2PasswordHash.KeySizeBytes</b>
-     *      <ul>
-     *          <li>min 16</li>
-     *          <li>default 32</li>
-     *      </ul>
-     *  </li>
+     * <b>Pbkdf2PasswordHash.KeySizeBytes</b>
+     * <ul>
+     *      <li>min 16</li>
+     *      <li>default 32</li>
+     * </ul>
      */
     public static final String PBKDF2_KEYSIZE = "Pbkdf2PasswordHash.KeySizeBytes";
 
     /**
-     * <li><b>BCrypt.Version</b>
-     *      <ul>
-     *          <li>$2A</li>
-     *          <li>$2Y</li>
-     *          <li>$2B</li>
-     *      </ul>
-     * </li>
+     * <b>BCrypt.Version</b>
+     * <ul>
+     *      <li>$2A</li>
+     *      <li>$2Y</li>
+     *      <li>$2B</li>
+     * </ul>
      */
     public static final String BCRYPT_VERSION = "BCrypt.Version";
 
     /**
-     * <li><b>BCrypt.Strength</b>
+     * <b>BCrypt.Strength</b>
      *      <ul>
      *          <li>min 4</li>
      *          <li>max 31</li>
      *      </ul>
-     * </li>
      */
     public static final String BCRYPT_STRENGTH = "BCrypt.Strength";
     

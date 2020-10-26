@@ -16,7 +16,6 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
  *  <li>BCrypt</li>
  * </ul>
  * 
- * <p>
  * <h2>PBKDF2 Parameters:</h2>
  * <ol>
  *  <li><b>Pbkdf2PasswordHash.Algorithm</b>
@@ -46,8 +45,6 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
  *      </ul>
  *  </li>
  * </ol>
- * </p>
- * <p>
  * <h2>BCrypt Parameters:</h2>
  * <ol>
  * <li><b>BCrypt.Version</b>
@@ -64,7 +61,6 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
  *      </ul>
  *  </li>
  * </ol>
- * </p>
  * @see org.sterl.hash.Algorithm
  * @see org.sterl.hash.bcrypt.BCryptPasswordEncoder.BCryptVersion
  * @see org.sterl.hash.BCryptPbkdf2PasswordHash
