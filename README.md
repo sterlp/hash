@@ -38,7 +38,15 @@ public class ApplicationConfiguration extends Application {
 ```
 
 # Maven Central
+```xml
+<dependency>
+  <groupId>org.sterl.hash</groupId>
+  <artifactId>hash-lib</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
 
+- https://oss.sonatype.org/content/repositories/releases/org/sterl/hash/hash-lib/0.1.0/
 - https://oss.sonatype.org/content/repositories/snapshots/org/sterl/hash/hash-lib/0.1.0-SNAPSHOT/
 
 ## How to release
