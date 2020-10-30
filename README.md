@@ -10,6 +10,10 @@ Common lib which provides a common Hash algorithms for JEE and Spring Boot:
 
 # jee-hash-lib
 
+Support BCrypt and PBKDF2 password hash and verification. As so be compatible with existing JEE JDBC user stores and
+Spring Boot user stores.
+
+## Usage
 ```java
 import javax.annotation.security.DeclareRoles;
 import javax.enterprise.context.ApplicationScoped;
@@ -36,8 +40,16 @@ public class ApplicationConfiguration extends Application {
     
 }
 ```
+## Maven import
+```xml
+<dependency>
+  <groupId>org.sterl.hash</groupId>
+  <artifactId>jee-hash-lib</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
 
-# Maven Central
+# Base Lib
 ```xml
 <dependency>
   <groupId>org.sterl.hash</groupId>
@@ -46,10 +58,11 @@ public class ApplicationConfiguration extends Application {
 </dependency>
 ```
 
-- https://oss.sonatype.org/content/repositories/releases/org/sterl/hash/hash-lib/0.1.0/
-- https://oss.sonatype.org/content/repositories/snapshots/org/sterl/hash/hash-lib/0.1.0-SNAPSHOT/
+- https://oss.sonatype.org/content/repositories/releases/org/sterl/hash/hash-lib
+- https://oss.sonatype.org/content/repositories/snapshots/org/sterl/hash/hash-lib
 
 ## How to release
 
+- `mvn versions:set -DnewVersion=x.x.x-SNAPSHOT`
 - `mvn clean install -Prelease`
 - `mvn deploy`
