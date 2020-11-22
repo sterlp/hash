@@ -40,7 +40,7 @@ public class ApplicationConfiguration extends Application {
     
 }
 ```
-## Maven import
+## Maven import JEE
 ```xml
 <dependency>
   <groupId>org.sterl.hash</groupId>
@@ -58,8 +58,29 @@ public class ApplicationConfiguration extends Application {
 </dependency>
 ```
 
-- https://oss.sonatype.org/content/repositories/releases/org/sterl/hash/hash-lib
-- https://oss.sonatype.org/content/repositories/snapshots/org/sterl/hash/hash-lib
+- Release: https://oss.sonatype.org/content/repositories/releases/org/sterl/hash/
+- Snapshot: https://oss.sonatype.org/content/repositories/snapshots/org/sterl/hash/
+
+# Hash Lib CLI
+Download latest version of **hash-cli** here: https://github.com/sterlp/hash/releases
+
+## Create a BCrpyt password hash
+```
+java -jar hash-cli.jar mypassword
+> $2a$10$m4hjjVjjGD36bgHlblJaweMDrGelSO1lx4osfpNi/7DN9ZvTzMqA6
+```
+
+## Create a Hash with a specific algorithm
+```
+java -jar hash-cli.jar -a PBKDF2WithHmacSHA512 -p mypassword
+> PBKDF2WithHmacSHA512:2048:ilIYz4CirlKeZfa59Tu9Dlruc69zaAxGyDb0OOcpppM=:HMv6yD8WUKSM2XY6jHIuzz9ShXX1wj120Njb0TptJ6hBBWAFnOdx0xR1hvz9ICtp91sdBxRaMyU8LsYZCIuP9g==
+```
+
+## Verify a password hash
+```
+java -jar hash-cli.jar -a PBKDF2WithHmacSHA512 -p mypassword -h PBKDF2WithHmacSHA512:2048:ilIYz4CirlKeZfa59Tu9Dlruc69zaAxGyDb0OOcpppM=:HMv6yD8WUKSM2XY6jHIuzz9ShXX1wj120Njb0TptJ6hBBWAFnOdx0xR1hvz9ICtp91sdBxRaMyU8LsYZCIuP9g==
+> true
+```
 
 ## How to release
 
