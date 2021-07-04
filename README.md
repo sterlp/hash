@@ -1,4 +1,5 @@
 ![Hash Lib CI](https://github.com/sterlp/hash/workflows/Hash%20Lib%20CI/badge.svg)
+[![CodeQL](https://github.com/sterlp/hash/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/sterlp/hash/actions/workflows/codeql-analysis.yml)
 
 # Hash Lib Cli
 Tool to create BCrypt and PBKDF2 hashes of passwords directly in the command line:
