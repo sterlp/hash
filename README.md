@@ -6,19 +6,28 @@ Tool to create BCrypt and PBKDF2 hashes of passwords directly in the command lin
 
 Download latest version of **hash-cli** here: https://github.com/sterlp/hash/releases
 
-## Create a BCrpyt password hash
+## Create a password hash
+### BCrpyt
 ```
 java -jar hash-cli.jar mypassword
 > $2a$10$m4hjjVjjGD36bgHlblJaweMDrGelSO1lx4osfpNi/7DN9ZvTzMqA6
 ```
 
-## Create a Hash with a specific algorithm
+### PBKDF2WithHmacSHA512
 ```
 java -jar hash-cli.jar -a PBKDF2WithHmacSHA512 -p mypassword
 > PBKDF2WithHmacSHA512:2048:ilIYz4CirlKeZfa59Tu9Dlruc69zaAxGyDb0OOcpppM=:HMv6yD8WUKSM2XY6jHIuzz9ShXX1wj120Njb0TptJ6hBBWAFnOdx0xR1hvz9ICtp91sdBxRaMyU8LsYZCIuP9g==
 ```
 
 ## Verify a password hash
+
+### BCrypt
+```
+java -jar hash-cli.jar -p foo -h "$2a$10$At1ZDrj3taopwLzeZ237KekybhWlF6quEd8bv9eAIWrTVzvtKyTEi"
+> true
+```
+
+### PBKDF2WithHmacSHA512
 ```
 java -jar hash-cli.jar -a PBKDF2WithHmacSHA512 -p mypassword -h PBKDF2WithHmacSHA512:2048:ilIYz4CirlKeZfa59Tu9Dlruc69zaAxGyDb0OOcpppM=:HMv6yD8WUKSM2XY6jHIuzz9ShXX1wj120Njb0TptJ6hBBWAFnOdx0xR1hvz9ICtp91sdBxRaMyU8LsYZCIuP9g==
 > true
