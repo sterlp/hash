@@ -4,7 +4,8 @@
 # Hash Lib Cli
 Tool to create BCrypt and PBKDF2 hashes of passwords directly in the command line:
 
-Download latest version of **hash-cli** here: https://github.com/sterlp/hash/releases
+- Download latest version of **hash-cli** here: https://github.com/sterlp/hash/releases
+- [Maven Central](https://search.maven.org/search?q=org.sterl.hash)
 
 ## Create a password hash
 ### BCrpyt
